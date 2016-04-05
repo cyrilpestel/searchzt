@@ -10,6 +10,7 @@ class ZTSearchProvider
 		termEncoded = CGI::escape(term)
 
 		url = "http://www.zone-telechargement.com/films-gratuit.html?q=#{termEncoded}&minrating=0&tab=all&orderby_by=popular&orderby_order=desc"
+		puts "============================================"
 		puts "Looking for : #{term}"
 		puts "Getting url : #{url}"
 		puts "============================================"
@@ -33,10 +34,10 @@ class ZTSearchProvider
 				end
 
 				if found
-					puts result.text
+					puts " + #{result.text} - #{result['href']}"
 					#puts quality.text
-					puts result["href"]
-					puts "============================================"
+					# puts result["href"]
+					# puts "============================================"
 				end
 			}
 		rescue OpenURI::HTTPError => error
